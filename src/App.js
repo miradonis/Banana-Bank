@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+
+  let [input, setNumber] = useState(0)
+
+  function Einzahlen () {
+    let inputUser = Number(document.getElementById('inputUser').value);
+    setNumber(input + inputUser);
+  }
+
+  function Auszahlen () {
+    let inputUser = Number(document.getElementById('inputUser').value);
+    setNumber(input - inputUser);
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 id='title'>Banana Bank</h1>
+      <div>
+        <p className='konto'>Dein Girokonto</p>
+        <p className='saldo'>{input} €</p>
+      </div>
+      <input className='geldbetrag' id='inputUser'></input>
+      <div className='inputAndBtn'>
+        <button className='auszahlen' onClick={Einzahlen}>Einzahlen</button>
+        <button className='einzahlen' onClick={Auszahlen}>Auszahlen</button>
+      </div>
     </div>
   );
 }
